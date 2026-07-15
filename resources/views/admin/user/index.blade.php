@@ -88,9 +88,11 @@
                             @endphp
                             <td>{{ $roles[$user->role_id] }}</td>
                             <td>
-                                <a href="{{ route('admin.user.edit', $user->id_users) }}" class="btn btn-warning btn-circle btn-sm">
-                                    <i class="fas fa-pen"></i>
-                                </a>
+                                @can('user.update')
+                                    <a href="{{ route('admin.user.edit', $user->id_users) }}" class="btn btn-warning btn-circle btn-sm">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                @endcan
                             </td>
                         </tr>
                         @endforeach

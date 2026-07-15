@@ -40,18 +40,16 @@
                 <h6 class="m-0 font-weight-bold text-primary">Data Menu</h6>
 
                 <div class="d-flex">
-                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
-                        <i class="fas fa-plus"></i> Tambah Data
-                    </button>
-
-                    <button class="btn btn-danger btn-sm ml-1" data-bs-toggle="modal" data-bs-target="#restoreModal" title="Trash Data">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    @can('menu.create')
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
+                            <i class="fas fa-plus"></i> Tambah Data
+                        </button>
+                    @endcan
                 </div>
             </div>
             
             <div class="card-body">
-                <div class="table-responsive pt-2">
+                <div class="pt-2">
                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -60,7 +58,9 @@
                                 <th>Stok</th>
                                 <th>Harga</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
+                                @canany(['menu.update', 'menu.delete'])
+                                    <th>Aksi</th>
+                                @endcanany
                             </tr>
                         </thead>
                         <tbody>
@@ -71,28 +71,34 @@
                                 <td>{{ $menuItem->stok }}</td>
                                 <td>Rp{{ number_format($menuItem->harga, 0, ',', '.') }}</td>
                                 <td>{{ $menuItem->keterangan ?? '-' }}</td>
+                                @canany(['menu.update', 'menu.delete'])
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#editModal"
-                                            data-url="{{ route('admin.menu.update', $menuItem->id) }}"
-                                            data-id="{{ $menuItem->id }}"
-                                            data-nama_menu="{{ $menuItem->nama_menu }}"
-                                            data-stok="{{ $menuItem->stok }}"
-                                            data-harga="{{ $menuItem->harga }}"
-                                            data-keterangan="{{ $menuItem->keterangan }}">
-                                            <i class="fas fa-pen"></i>
-                                        </button>
+                                        @can('menu.update')
+                                            <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#editModal"
+                                                data-url="{{ route('admin.menu.update', $menuItem->id) }}"
+                                                data-id="{{ $menuItem->id }}"
+                                                data-nama_menu="{{ $menuItem->nama_menu }}"
+                                                data-stok="{{ $menuItem->stok }}"
+                                                data-harga="{{ $menuItem->harga }}"
+                                                data-keterangan="{{ $menuItem->keterangan }}">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                        @endcan
 
-                                        <button class="btn btn-danger btn-sm btn-circle deleteBtn"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal"
-                                            data-url="{{ route('admin.menu.destroy', $menuItem->id) }}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        @can('menu.delete')
+                                            <button class="btn btn-danger btn-sm btn-circle deleteBtn"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-url="{{ route('admin.menu.destroy', $menuItem->id) }}">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        @endcan
                                     </div>
                                 </td>
+                                @endcanany
                             </tr>
                             @endforeach
                         </tbody>
@@ -101,10 +107,15 @@
             </div>
         </div>
 </div>
-@include('admin.menu.create')
-@include('admin.menu.edit')
-@include('admin.menu.delete')
-@include('admin.menu.restore')
+@can('menu.create')
+    @include('admin.menu.create')
+@endcan
+@can('menu.update')
+    @include('admin.menu.edit')
+@endcan
+@can('menu.delete')
+    @include('admin.menu.delete')
+@endcan
 @endsection
 
 @section('scripts')
@@ -132,13 +143,6 @@ document.addEventListener('click', function(e) {
     if (!deleteBtn) return;
 
     document.getElementById('deleteForm').action = deleteBtn.dataset.url;
-});
-
-// Script Modal Restore Data Tables
-$('#restoreModal').on('shown.bs.modal', function () {
-    if (!$.fn.DataTable.isDataTable('#restoreTable')) {
-        $('#restoreTable').DataTable();
-    }
 });
 </script>
 @endsection

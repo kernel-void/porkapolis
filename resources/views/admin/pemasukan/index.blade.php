@@ -39,14 +39,12 @@
             <div class="card-header py-2 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Pemasukan</h6>
 
-                <div class="d-flex">
-                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
-                        <i class="fas fa-plus"></i> Tambah Data
-                    </button>
-
-                    <button class="btn btn-danger btn-sm ml-1" data-bs-toggle="modal" data-bs-target="#restoreModal" title="Trash Data">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                <div class="d-flex gap-1">
+                    @can('pemasukan.create')
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
+                            <i class="fas fa-plus"></i> Tambah Data
+                        </button>
+                    @endcan
                 </div>
             </div>
 
@@ -60,7 +58,9 @@
                                 <th>Rincian Menu</th>
                                 <th>Total</th>
                                 <th>Keterangan</th>
-                                <th>Aksi</th>
+                                @canany(['pemasukan.update', 'pemasukan.delete'])
+                                    <th>Aksi</th>
+                                @endcanany
                             </tr>
                         </thead>
                         <tbody>
@@ -83,26 +83,32 @@
                                 </td>
                                 <td class="fw-bold">Rp{{ number_format($masukan->total, 0, ',', '.') }}</td>
                                 <td>{{ $masukan->keterangan ?? '-' }}</td>
+                                @canany(['pemasukan.update', 'pemasukan.delete'])
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#editModal"
-                                            data-url="{{ route('admin.pemasukan.update', $masukan->id) }}"
-                                            data-tanggal="{{ $masukan->tanggal }}"
-                                            data-keterangan="{{ $masukan->keterangan }}"
-                                            data-items="{{ $masukan->details->map(fn($d) => ['menu_id' => $d->menu_id, 'qty' => $d->qty])->toJson() }}">
-                                            <i class="fas fa-pen"></i>
-                                        </button>
+                                        @can('pemasukan.update')
+                                            <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#editModal"
+                                                data-url="{{ route('admin.pemasukan.update', $masukan->id) }}"
+                                                data-tanggal="{{ $masukan->tanggal }}"
+                                                data-keterangan="{{ $masukan->keterangan }}"
+                                                data-items="{{ $masukan->details->map(fn($d) => ['menu_id' => $d->menu_id, 'qty' => $d->qty])->toJson() }}">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                        @endcan
 
-                                        <button class="btn btn-danger btn-sm btn-circle deleteBtn"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal"
-                                            data-url="{{ route('admin.pemasukan.destroy', $masukan->id) }}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
+                                        @can('pemasukan.delete')
+                                            <button class="btn btn-danger btn-sm btn-circle deleteBtn"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal"
+                                                data-url="{{ route('admin.pemasukan.destroy', $masukan->id) }}">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        @endcan
                                     </div>
                                 </td>
+                                @endcanany
                             </tr>
                             @endforeach
                         </tbody>
@@ -111,10 +117,15 @@
             </div>
         </div>
 </div>
-@include('admin.pemasukan.create')
-@include('admin.pemasukan.edit')
-@include('admin.pemasukan.delete')
-@include('admin.pemasukan.restore')
+@can('pemasukan.create')
+    @include('admin.pemasukan.create')
+@endcan
+@can('pemasukan.update')
+    @include('admin.pemasukan.edit')
+@endcan
+@can('pemasukan.delete')
+    @include('admin.pemasukan.delete')
+@endcan
 
 @endsection
 
@@ -192,50 +203,68 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById(grandTotalId).textContent = formatRupiah(total);
     }
 
-    // ==== Init form Create ====
-    const createMenuOptions = document.querySelector('#createModal .menu-select').innerHTML;
-    let createIndex = 1;
-    attachRowEvents(document.querySelector('#createModal .item-row'), 'itemsWrapper', 'grandTotal');
+    // ==== Init form Create (hanya jika modal create dirender / user punya izin) ====
+    const createModalEl = document.getElementById('createModal');
+    let createMenuOptions = null;
 
-    document.getElementById('addRow').addEventListener('click', function () {
-        const row = buildItemRow('itemsWrapper', createIndex, createMenuOptions);
-        attachRowEvents(row, 'itemsWrapper', 'grandTotal');
-        toggleRemoveButtons('itemsWrapper');
-        createIndex++;
-    });
+    if (createModalEl) {
+        createMenuOptions = createModalEl.querySelector('.menu-select').innerHTML;
+        let createIndex = 1;
 
-    // ==== Init form Edit (isi ulang saat tombol edit diklik) ====
-    document.addEventListener('click', function (e) {
-        const btn = e.target.closest('.editBtn');
-        if (!btn) return;
+        attachRowEvents(createModalEl.querySelector('.item-row'), 'itemsWrapper', 'grandTotal');
 
-        document.getElementById('editForm').action = btn.dataset.url;
-        document.getElementById('edit_tanggal').value = btn.dataset.tanggal;
-        document.getElementById('edit_keterangan').value = btn.dataset.keterangan;
+        const addRowBtn = document.getElementById('addRow');
+        if (addRowBtn) {
+            addRowBtn.addEventListener('click', function () {
+                const row = buildItemRow('itemsWrapper', createIndex, createMenuOptions);
+                attachRowEvents(row, 'itemsWrapper', 'grandTotal');
+                toggleRemoveButtons('itemsWrapper');
+                createIndex++;
+            });
+        }
+    }
 
-        const wrapper = document.getElementById('editItemsWrapper');
-        wrapper.innerHTML = ''; // kosongkan dulu
+    // ==== Init form Edit (hanya jika modal edit dirender / user punya izin) ====
+    const editModalEl = document.getElementById('editModal');
 
-        const items = JSON.parse(btn.dataset.items || '[]');
-        let editIndex = 0;
+    if (editModalEl) {
+        const editMenuOptions = createMenuOptions ?? editModalEl.querySelector('.menu-select')?.innerHTML;
 
-        items.forEach(item => {
-            const row = buildItemRow('editItemsWrapper', editIndex, createMenuOptions, item.menu_id, item.qty);
-            attachRowEvents(row, 'editItemsWrapper', 'editGrandTotal');
-            editIndex++;
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('.editBtn');
+            if (!btn) return;
+
+            document.getElementById('editForm').action = btn.dataset.url;
+            document.getElementById('edit_tanggal').value = btn.dataset.tanggal;
+            document.getElementById('edit_keterangan').value = btn.dataset.keterangan;
+
+            const wrapper = document.getElementById('editItemsWrapper');
+            wrapper.innerHTML = '';
+
+            const items = JSON.parse(btn.dataset.items || '[]');
+            let editIndex = 0;
+
+            items.forEach(item => {
+                const row = buildItemRow('editItemsWrapper', editIndex, editMenuOptions, item.menu_id, item.qty);
+                attachRowEvents(row, 'editItemsWrapper', 'editGrandTotal');
+                editIndex++;
+            });
+
+            toggleRemoveButtons('editItemsWrapper');
+            hitungGrandTotal('editItemsWrapper', 'editGrandTotal');
         });
 
-        toggleRemoveButtons('editItemsWrapper');
-        hitungGrandTotal('editItemsWrapper', 'editGrandTotal');
-    });
-
-    document.getElementById('editAddRow').addEventListener('click', function () {
-        const wrapper = document.getElementById('editItemsWrapper');
-        const nextIndex = wrapper.querySelectorAll('.item-row').length;
-        const row = buildItemRow('editItemsWrapper', nextIndex, createMenuOptions);
-        attachRowEvents(row, 'editItemsWrapper', 'editGrandTotal');
-        toggleRemoveButtons('editItemsWrapper');
-    });
+        const editAddRowBtn = document.getElementById('editAddRow');
+        if (editAddRowBtn) {
+            editAddRowBtn.addEventListener('click', function () {
+                const wrapper = document.getElementById('editItemsWrapper');
+                const nextIndex = wrapper.querySelectorAll('.item-row').length;
+                const row = buildItemRow('editItemsWrapper', nextIndex, editMenuOptions);
+                attachRowEvents(row, 'editItemsWrapper', 'editGrandTotal');
+                toggleRemoveButtons('editItemsWrapper');
+            });
+        }
+    }
 
 });
 
@@ -248,10 +277,13 @@ document.addEventListener('click', function(e) {
 });
 
 // Script Modal Restore Data Tables
-$('#restoreModal').on('shown.bs.modal', function () {
-    if (!$.fn.DataTable.isDataTable('#restoreTable')) {
-        $('#restoreTable').DataTable();
-    }
-});
+const restoreModalEl = document.getElementById('restoreModal');
+if (restoreModalEl) {
+    $('#restoreModal').on('shown.bs.modal', function () {
+        if (!$.fn.DataTable.isDataTable('#restoreTable')) {
+            $('#restoreTable').DataTable();
+        }
+    });
+}
 </script>
 @endsection

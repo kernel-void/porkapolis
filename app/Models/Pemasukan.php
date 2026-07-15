@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pemasukan extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'pemasukans'; // Nama tabel
 
@@ -17,8 +16,7 @@ class Pemasukan extends Model
     protected $fillable = [
         'tanggal', 
         'keterangan', 
-        'total', 
-        'deleted_at'
+        'total',
     ];
 
     public function details()

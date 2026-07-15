@@ -39,69 +39,109 @@
             <div class="card-header py-2 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Pengeluaran</h6>
 
-                <div class="d-flex">
-                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
-                        <i class="fas fa-plus"></i> Tambah Data
-                    </button>
+                <div class="d-flex gap-1">
+                    @can('pengeluaran.create')
+                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
+                            <i class="fas fa-plus"></i> Tambah Data
+                        </button>
+                    @endcan
 
-                    <button class="btn btn-danger btn-sm ml-1" data-bs-toggle="modal" data-bs-target="#restoreModal" title="Trash Data">
-                        <i class="fas fa-trash"></i>
-                    </button>
+                    @can('pengeluaran.export')
+                        <button type="submit" form="printForm" class="btn btn-outline-secondary btn-sm ml-1" title="Export PDF">
+                            <i class="fas fa-print mr-1"></i> Export PDF
+                        </button>
+                    @endcan
                 </div>
             </div>
             
             <div class="card-body">
-                <div class="table-responsive pt-2">
-                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Tanggal</th>
-                                <th>Jumlah</th>
-                                <th>Keterangan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($pengeluaran as $key => $keluar)
-                            <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ \Carbon\Carbon::parse($keluar->tanggal)->translatedFormat('d F Y') }}</td>
-                                <td>Rp{{ number_format($keluar->jumlah, 0, ',', '.') }}</td>
-                                <td>{{ $keluar->keterangan ?? '-' }}</td>
-                                <td>
-                                    <div class="d-flex justify-content-center align-items-center">
-                                        <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
-                                            data-bs-toggle="modal" 
-                                            data-bs-target="#editModal"
-                                            data-url="{{ route('admin.pengeluaran.update', $keluar->id) }}"
-                                            data-id="{{ $keluar->id }}"
-                                            data-tanggal="{{ $keluar->tanggal }}"
-                                            data-keterangan="{{ $keluar->keterangan }}"
-                                            data-jumlah="{{ $keluar->jumlah }}">
-                                            <i class="fas fa-pen"></i>
-                                        </button>
+                <div class="pt-2">
+                    <form id="printForm" action="{{ route('admin.pengeluaran.exportPdf') }}" method="POST" target="_blank">
+                    @csrf
+                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
+                            <thead>
+                                <tr>
+                                    @can('pengeluaran.export')
+                                        <th style="width: 70px;">
+                                            <input type="checkbox" id="checkAll" class="mr-1">
+                                            No
+                                        </th>
+                                    @else
+                                        <th style="width: 50px;">No</th>
+                                    @endcan
+                                    <th style="width: 130px;">Tanggal</th>
+                                    <th style="width: 150px;">Jumlah</th>
+                                    <th>Keterangan</th>
+                                    @canany(['pengeluaran.update', 'pengeluaran.delete'])
+                                        <th style="width: 110px;">Aksi</th>
+                                    @endcanany
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pengeluaran as $key => $keluar)
+                                <tr>
+                                    @can('pengeluaran.export')
+                                        <td>
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <input type="checkbox"
+                                                       name="pengeluaran_ids[]"
+                                                       value="{{ $keluar->id }}"
+                                                       form="printForm"
+                                                       class="row-check mr-2">
+                                                <span>{{ $key + 1 }}</span>
+                                            </div>
+                                        </td>
+                                    @else
+                                        <td>{{ $key + 1 }}</td>
+                                    @endcan
+                                    <td>{{ \Carbon\Carbon::parse($keluar->tanggal)->translatedFormat('d F Y') }}</td>
+                                    <td>Rp{{ number_format($keluar->jumlah, 0, ',', '.') }}</td>
+                                    <td class="text-break">{{ $keluar->keterangan ?? '-' }}</td>
+                                    @canany(['pengeluaran.update', 'pengeluaran.delete'])
+                                    <td>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            @can('pengeluaran.update')
+                                                <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#editModal"
+                                                    data-url="{{ route('admin.pengeluaran.update', $keluar->id) }}"
+                                                    data-id="{{ $keluar->id }}"
+                                                    data-tanggal="{{ $keluar->tanggal }}"
+                                                    data-keterangan="{{ $keluar->keterangan }}"
+                                                    data-jumlah="{{ $keluar->jumlah }}">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                            @endcan
 
-                                        <button class="btn btn-danger btn-sm btn-circle deleteBtn"
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#deleteModal"
-                                            data-url="{{ route('admin.pengeluaran.destroy', $keluar->id) }}">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                            @can('pengeluaran.delete')
+                                                <button class="btn btn-danger btn-sm btn-circle deleteBtn"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#deleteModal"
+                                                    data-url="{{ route('admin.pengeluaran.destroy', $keluar->id) }}">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            @endcan
+                                        </div>
+                                    </td>
+                                    @endcanany
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
             </div>
         </div>
 </div>
-@include('admin.pengeluaran.create')
-@include('admin.pengeluaran.edit')
-@include('admin.pengeluaran.delete')
-@include('admin.pengeluaran.restore')
+@can('pengeluaran.create')
+    @include('admin.pengeluaran.create')
+@endcan
+@can('pengeluaran.update')
+    @include('admin.pengeluaran.edit')
+@endcan
+@can('pengeluaran.delete')
+    @include('admin.pengeluaran.delete')
+@endcan
 @endsection
 
 @section('scripts')
@@ -129,11 +169,26 @@ document.addEventListener('click', function(e) {
     document.getElementById('deleteForm').action = deleteBtn.dataset.url;
 });
 
-// Script Modal Restore Data Tables
-$('#restoreModal').on('shown.bs.modal', function () {
-    if (!$.fn.DataTable.isDataTable('#restoreTable')) {
-        $('#restoreTable').DataTable();
-    }
-});
+// Checklist semua (hanya ada kalau user punya izin export)
+const checkAllEl = document.getElementById('checkAll');
+if (checkAllEl) {
+    checkAllEl.addEventListener('change', function () {
+        document.querySelectorAll('.row-check').forEach(cb => {
+            cb.checked = this.checked;
+        });
+    });
+}
+
+// Cegah export kalau tidak ada yang dipilih
+const printFormEl = document.getElementById('printForm');
+if (printFormEl) {
+    printFormEl.addEventListener('submit', function (e) {
+        const checked = document.querySelectorAll('.row-check:checked');
+        if (checked.length === 0) {
+            e.preventDefault();
+            alert('Silakan pilih minimal satu data untuk diexport.');
+        }
+    });
+}
 </script>
 @endsection

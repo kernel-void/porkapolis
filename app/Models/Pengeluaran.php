@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pengeluaran extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'pengeluarans';
 
@@ -17,7 +16,6 @@ class Pengeluaran extends Model
     protected $fillable = [
         'tanggal', 
         'keterangan', 
-        'jumlah', 
-        'deleted_at'
+        'jumlah'
     ];
 }
