@@ -48,9 +48,9 @@
             </div>
             
             <div class="card-body">
-                <div class="table-responsive pt-2">
-                    <form id="printForm" action="{{ route('owner.pengeluaran.exportPdf') }}" method="POST" target="_blank">
-                    @csrf
+                <form id="printForm" action="{{ route('owner.pengeluaran.exportPdf') }}" method="POST" target="_blank">
+                @csrf
+                    <div class="table-scroll-wrapper pt-2">
                         <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
@@ -83,11 +83,39 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    .table-scroll-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+        scrollbar-width: thin;
+    }
+
+    .table-scroll-wrapper table {
+        min-width: 700px; /* paksa lebar minimum supaya scroll muncul di layar sempit */
+    }
+
+    .table-scroll-wrapper::-webkit-scrollbar {
+        height: 8px;
+    }
+
+    .table-scroll-wrapper::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 4px;
+    }
+
+    .table-scroll-wrapper::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+</style>
 @endsection
 
 @section('scripts')

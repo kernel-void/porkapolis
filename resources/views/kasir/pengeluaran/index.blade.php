@@ -53,17 +53,17 @@
             </div>
             
             <div class="card-body">
-                <div class="table-responsive pt-2">
+                <div class="pt-2">
                     <form id="printForm" action="{{ route('kasir.pengeluaran.exportPdf') }}" method="POST" target="_blank">
                     @csrf
-                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Tanggal</th>
-                                    <th>Jumlah</th>
+                                    <th style="width: 60px;">No</th>
+                                    <th style="width: 130px;">Tanggal</th>
+                                    <th style="width: 150px;">Jumlah</th>
                                     <th>Keterangan</th>
-                                    <th>Aksi</th>
+                                    <th style="width: 110px;">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,7 +72,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ \Carbon\Carbon::parse($keluar->tanggal)->translatedFormat('d F Y') }}</td>
                                     <td>Rp{{ number_format($keluar->jumlah, 0, ',', '.') }}</td>
-                                    <td>{{ $keluar->keterangan ?? '-' }}</td>
+                                    <td class="text-break">{{ $keluar->keterangan ?? '-' }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center align-items-center">
                                             <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
@@ -125,26 +125,12 @@
         document.getElementById('edit_jumlah').value = jumlah;
     });
 
-    // Checklist semua
-    document.getElementById('checkAll').addEventListener('change', function () {
-        document.querySelectorAll('.row-check').forEach(cb => {
-            cb.checked = this.checked;
-        });
-    });
-
-    // Cegah export kalau tidak ada yang dipilih
-    document.getElementById('printForm').addEventListener('submit', function (e) {
-        const checked = document.querySelectorAll('.row-check:checked');
-        if (checked.length === 0) {
-            e.preventDefault();
-            alert('Silakan pilih minimal satu data untuk diexport.');
-        }
-    });
-    
     document.addEventListener('DOMContentLoaded', function () {
         const tgl = document.getElementById('tanggal');
-        let today = new Date().toISOString().split('T')[0];
-        tgl.value = today; // otomatis isi hari ini
+        if (tgl) {
+            let today = new Date().toISOString().split('T')[0];
+            tgl.value = today; // otomatis isi hari ini
+        }
     });
 
     // Script Modal Delete

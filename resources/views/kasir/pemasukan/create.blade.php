@@ -1,9 +1,9 @@
 <!-- Modal Create Pemasukan -->
 <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
 
-            <form action="{{ route('kasir.pemasukan.store') }}" method="POST">
+            <form action="{{ route('kasir.pemasukan.store') }}" method="POST" id="formPemasukan">
                 @csrf
 
                 <div class="modal-header">
@@ -14,35 +14,45 @@
                 <div class="modal-body">
 
                     <div class="form-group mb-3">
-                        <label for="nama_menu">Nama Menu</label>
-                        <select name="menu_id" id="menu_id" class="form-control" required>
-                            <option value="">-- Pilih Menu --</option>
-                            @foreach ($menu as $m)
-                                <option value="{{ $m->id }}" data-harga="{{ $m->harga }}">
-                                    {{ $m->nama_menu }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="form-group mb-3">
                         <label for="tanggal">Tanggal</label>
-                        <input type="date" name="tanggal" id="tanggal" class="form-control" required >
+                        <input type="date" name="tanggal" class="form-control" required>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="qty">Jumlah Terjual</label>
-                        <input type="text" inputmode="numeric" name="qty" id="qty" class="form-control" required placeholder="Jumlah Terjual" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                    <label>Daftar Menu</label>
+                    <div id="itemsWrapper">
+                        <div class="row item-row mb-2 align-items-end">
+                            <div class="col-5">
+                                <select name="items[0][menu_id]" class="form-control menu-select" required>
+                                    <option value="">-- Pilih Menu --</option>
+                                    @foreach ($menu as $m)
+                                        <option value="{{ $m->id }}" data-harga="{{ $m->harga }}">
+                                            {{ $m->nama_menu }} - Rp{{ number_format($m->harga) }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <input type="number" name="items[0][qty]" class="form-control qty-input" placeholder="Qty" min="1" required>
+                            </div>
+                            <div class="col-3">
+                                <input type="text" class="form-control subtotal-display" placeholder="Subtotal" disabled>
+                            </div>
+                            <div class="col-1">
+                                <button type="button" class="btn btn-danger btn-sm remove-row" style="display:none;">×</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="total">Total</label>
-                        <input type="text" inputmode="numeric" name="total" id="total" class="form-control" placeholder="Masukkan total">
+                    <button type="button" id="addRow" class="btn btn-outline-primary btn-sm mt-2">+ Tambah Menu</button>
+
+                    <hr>
+                    <div class="text-end fw-bold">
+                        Total: Rp<span id="grandTotal">0</span>
                     </div>
 
-                    <div class="form-group mb-3">
+                    <div class="form-group mb-3 mt-3">
                         <label for="keterangan">Keterangan</label>
-                        <textarea name="keterangan" class="form-control" rows="3" placeholder="Masukkan keterangan..."></textarea>
+                        <textarea name="keterangan" class="form-control" rows="2" placeholder="Masukkan keterangan..."></textarea>
                     </div>
 
                 </div>

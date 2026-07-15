@@ -31,7 +31,7 @@
                                 @foreach ($deletedData as $index => $item)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $item->menu->nama_menu }}</td>
+                                        <td>{{ $detail->menu->nama_menu ?? '(menu dihapus)' }}</td>
                                         <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                         <td>{{ $item->qty }}</td>
                                         <td>Rp{{ number_format($item->total, 0, ',', '.') }}</td>
