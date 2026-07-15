@@ -15,21 +15,15 @@ class Pemasukan extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'menu_id',
         'tanggal', 
         'keterangan', 
-        'qty', 
         'total', 
         'deleted_at'
     ];
 
-    public function menu()
+    public function details()
     {
-        return $this->belongsTo(Menu::class, 'menu_id', 'id')->withTrashed();
+        return $this->hasMany(PemasukanDetail::class);
     }
-    
-    protected $casts = [
-        'qty' => 'integer',
-    ];
     
 }

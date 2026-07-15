@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('pengeluarans', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->date('tanggal');
             $table->text('keterangan')->nullable();
             $table->integer('jumlah');
@@ -21,11 +18,8 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('pemasukans');
+        Schema::dropIfExists('pengeluarans');
     }
 };

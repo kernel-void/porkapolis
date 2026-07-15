@@ -6,31 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void 
+    public function up(): void
     {
         Schema::create('pemasukans', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->uuid('menu_id');
+            $table->id();
+            $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
             $table->date('tanggal');
-            $table->integer('qty');           // jumlah terjual
-            $table->integer('total');         // otomatis harga * qty
+            $table->integer('qty');
+            $table->integer('total');
             $table->text('keterangan')->nullable();
-
-            $table->foreign('menu_id')
-                ->references('id')->on('menus')
-                ->onDelete('cascade');
-
             $table->softDeletes();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('pemasukans');

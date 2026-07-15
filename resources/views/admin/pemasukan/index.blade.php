@@ -56,9 +56,8 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Menu</th>
                                 <th>Tanggal</th>
-                                <th>Jumlah Terjual</th>
+                                <th>Rincian Menu</th>
                                 <th>Total</th>
                                 <th>Keterangan</th>
                                 <th>Aksi</th>
@@ -68,23 +67,31 @@
                             @foreach ($pemasukan as $key => $masukan)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $masukan->menu->nama_menu }}</td>
                                 <td>{{ \Carbon\Carbon::parse($masukan->tanggal)->translatedFormat('d F Y') }}</td>
-                                <td>{{ $masukan->qty }}</td>
-                                <td>Rp{{ number_format($masukan->total, 0, ',', '.') }}</td>
+                                <td class="text-start">
+                                    <ul class="mb-0 ps-3">
+                                        @foreach ($masukan->details as $detail)
+                                            <li>
+                                                {{ $detail->menu->nama_menu ?? '(menu dihapus)' }}
+                                                <span class="text-muted">
+                                                    &times; {{ $detail->qty }}
+                                                    = Rp{{ number_format($detail->subtotal, 0, ',', '.') }}
+                                                </span>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </td>
+                                <td class="fw-bold">Rp{{ number_format($masukan->total, 0, ',', '.') }}</td>
                                 <td>{{ $masukan->keterangan ?? '-' }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">
                                         <button class="btn btn-warning btn-sm btn-circle editBtn mr-1"
                                             data-bs-toggle="modal" 
                                             data-bs-target="#editModal"
-                                            data-menu_id="{{ $masukan->menu_id }}"
                                             data-url="{{ route('admin.pemasukan.update', $masukan->id) }}"
-                                            data-id="{{ $masukan->id }}"
                                             data-tanggal="{{ $masukan->tanggal }}"
-                                            data-qty="{{ $masukan->qty }}"
-                                            data-total="{{ $masukan->total }}"
-                                            data-keterangan="{{ $masukan->keterangan }}">
+                                            data-keterangan="{{ $masukan->keterangan }}"
+                                            data-items="{{ $masukan->details->map(fn($d) => ['menu_id' => $d->menu_id, 'qty' => $d->qty])->toJson() }}">
                                             <i class="fas fa-pen"></i>
                                         </button>
 
@@ -113,54 +120,122 @@
 
 @section('scripts')
 <script>
-// Script untuk mengisi data pada modal edit
-document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.editBtn');
-    if (!btn) return;
-
-    let menu = btn.getAttribute('data-menu_id');
-    let tanggal = btn.getAttribute('data-tanggal');
-    let qty = btn.getAttribute('data-qty');
-    let total = btn.getAttribute('data-total');
-    let keterangan = btn.getAttribute('data-keterangan');
-
-    document.getElementById('edit_menu_id').value = btn.dataset.menu_id;
-    document.getElementById('editForm').action = btn.dataset.url;
-    document.getElementById('edit_tanggal').value = tanggal;
-    document.getElementById('edit_qty').value = qty;
-    document.getElementById('edit_total').value = total;
-    document.getElementById('edit_keterangan').value = keterangan;
-});
-
-// penginputan otomatis total berdasarkan menu dan qty
 document.addEventListener('DOMContentLoaded', function () {
 
-    function setupAutoTotal(menuId, qtyId, totalId) {
-        const menuSelect = document.getElementById(menuId);
-        const qtyInput = document.getElementById(qtyId);
-        const totalInput = document.getElementById(totalId);
-
-        // Kalau element tidak ada, jangan jalankan apapun
-        if (!menuSelect || !qtyInput || !totalInput) return;
-
-        function hitungTotal() {
-            let harga = menuSelect.selectedOptions[0]?.getAttribute('data-harga') || 0;
-            let qty = qtyInput.value || 0;
-            totalInput.value = harga * qty;
-        }
-
-        menuSelect.addEventListener('change', hitungTotal);
-        qtyInput.addEventListener('input', hitungTotal);
-
-        // Hitung otomatis saat modal edit dibuka (jika ada)
-        document.addEventListener('shown.bs.modal', hitungTotal);
+    function formatRupiah(angka) {
+        return new Intl.NumberFormat('id-ID').format(angka);
     }
 
-    // 🔥 Panggil untuk form Create
-    setupAutoTotal('menu_id', 'qty', 'total');
+    // ==== Builder baris item, dipakai untuk Create & Edit ====
+    function buildItemRow(wrapperId, index, menuOptionsHTML, selectedMenuId = '', qtyValue = '') {
+        const row = document.createElement('div');
+        row.classList.add('row', 'item-row', 'mb-2', 'align-items-end');
+        row.innerHTML = `
+            <div class="col-5">
+                <select name="items[${index}][menu_id]" class="form-control menu-select" required>
+                    ${menuOptionsHTML}
+                </select>
+            </div>
+            <div class="col-3">
+                <input type="number" name="items[${index}][qty]" class="form-control qty-input" placeholder="Qty" min="1" value="${qtyValue}" required>
+            </div>
+            <div class="col-3">
+                <input type="text" class="form-control subtotal-display" placeholder="Subtotal" disabled>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-danger btn-sm remove-row">×</button>
+            </div>
+        `;
+        document.getElementById(wrapperId).appendChild(row);
 
-    // 🔥 Panggil untuk form Edit
-    setupAutoTotal('edit_menu_id', 'edit_qty', 'edit_total');
+        if (selectedMenuId) {
+            row.querySelector('.menu-select').value = selectedMenuId;
+        }
+
+        return row;
+    }
+
+    function attachRowEvents(row, wrapperId, grandTotalId) {
+        function hitung() { hitungGrandTotal(wrapperId, grandTotalId); }
+
+        row.querySelector('.menu-select').addEventListener('change', hitung);
+        row.querySelector('.qty-input').addEventListener('input', hitung);
+        row.querySelector('.remove-row').addEventListener('click', function () {
+            row.remove();
+            hitung();
+            toggleRemoveButtons(wrapperId);
+        });
+    }
+
+    function toggleRemoveButtons(wrapperId) {
+        const rows = document.querySelectorAll('#' + wrapperId + ' .item-row');
+        rows.forEach(row => {
+            row.querySelector('.remove-row').style.display = rows.length > 1 ? 'inline-block' : 'none';
+        });
+    }
+
+    function hitungGrandTotal(wrapperId, grandTotalId) {
+        let total = 0;
+        document.querySelectorAll('#' + wrapperId + ' .item-row').forEach(row => {
+            const select = row.querySelector('.menu-select');
+            const qtyInput = row.querySelector('.qty-input');
+            const subtotalDisplay = row.querySelector('.subtotal-display');
+
+            const selectedOption = select.options[select.selectedIndex];
+            const harga = selectedOption ? parseInt(selectedOption.dataset.harga || 0) : 0;
+            const qty = parseInt(qtyInput.value) || 0;
+            const subtotal = harga * qty;
+
+            subtotalDisplay.value = subtotal > 0 ? 'Rp' + formatRupiah(subtotal) : '';
+            total += subtotal;
+        });
+        document.getElementById(grandTotalId).textContent = formatRupiah(total);
+    }
+
+    // ==== Init form Create ====
+    const createMenuOptions = document.querySelector('#createModal .menu-select').innerHTML;
+    let createIndex = 1;
+    attachRowEvents(document.querySelector('#createModal .item-row'), 'itemsWrapper', 'grandTotal');
+
+    document.getElementById('addRow').addEventListener('click', function () {
+        const row = buildItemRow('itemsWrapper', createIndex, createMenuOptions);
+        attachRowEvents(row, 'itemsWrapper', 'grandTotal');
+        toggleRemoveButtons('itemsWrapper');
+        createIndex++;
+    });
+
+    // ==== Init form Edit (isi ulang saat tombol edit diklik) ====
+    document.addEventListener('click', function (e) {
+        const btn = e.target.closest('.editBtn');
+        if (!btn) return;
+
+        document.getElementById('editForm').action = btn.dataset.url;
+        document.getElementById('edit_tanggal').value = btn.dataset.tanggal;
+        document.getElementById('edit_keterangan').value = btn.dataset.keterangan;
+
+        const wrapper = document.getElementById('editItemsWrapper');
+        wrapper.innerHTML = ''; // kosongkan dulu
+
+        const items = JSON.parse(btn.dataset.items || '[]');
+        let editIndex = 0;
+
+        items.forEach(item => {
+            const row = buildItemRow('editItemsWrapper', editIndex, createMenuOptions, item.menu_id, item.qty);
+            attachRowEvents(row, 'editItemsWrapper', 'editGrandTotal');
+            editIndex++;
+        });
+
+        toggleRemoveButtons('editItemsWrapper');
+        hitungGrandTotal('editItemsWrapper', 'editGrandTotal');
+    });
+
+    document.getElementById('editAddRow').addEventListener('click', function () {
+        const wrapper = document.getElementById('editItemsWrapper');
+        const nextIndex = wrapper.querySelectorAll('.item-row').length;
+        const row = buildItemRow('editItemsWrapper', nextIndex, createMenuOptions);
+        attachRowEvents(row, 'editItemsWrapper', 'editGrandTotal');
+        toggleRemoveButtons('editItemsWrapper');
+    });
 
 });
 
