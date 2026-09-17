@@ -1,0 +1,8 @@
+[17-Sep-2026 01:19:28 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/sasumyid/porkapolis.my.id/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/tests/Unit/ExampleTest.php on line 7
+[17-Sep-2026 01:19:37 UTC] PHP Fatal error:  Uncaught Error: Class "PHPUnit\Framework\TestCase" not found in /home/sasumyid/porkapolis.my.id/tests/Unit/ExampleTest.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/tests/Unit/ExampleTest.php on line 7

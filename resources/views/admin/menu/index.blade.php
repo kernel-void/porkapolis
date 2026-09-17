@@ -49,7 +49,7 @@
             </div>
             
             <div class="card-body">
-                <div class="pt-2">
+                <div class="pt-2 table-responsive">
                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>

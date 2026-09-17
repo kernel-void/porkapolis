@@ -28,15 +28,18 @@ setTimeout(function() {
 // Format Rupiah
 const rupiah = document.getElementById('rupiah');
 
-rupiah.addEventListener('input', function (e) {
-    let value = this.value.replace(/\D/g, '');
-    value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-    this.value = value;
-});
+if (rupiah) {
+    rupiah.addEventListener('input', function (e) {
+        let value = this.value.replace(/\D/g, '');
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        this.value = value;
+    });
+}
 
 
 function previewAvatar(input) {
     const preview = document.getElementById('avatarPreview');
+    if (!preview) return;
     const file = input.files[0];
     if (file) {
         const reader = new FileReader();
@@ -50,11 +53,7 @@ function previewAvatar(input) {
 // Select 2 Responsive
 $(document).ready(function() {
     $('.select2').select2({
-        width: '100%' // Tambahkan ini juga
+        width: '100%',
+        dropdownAutoWidth: true
     });
-});
-
-$('.select2').select2({
-    dropdownAutoWidth: true,
-    width: '100%' // atau 'resolve' jika ingin fleksibel
 });

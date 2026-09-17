@@ -1,0 +1,224 @@
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:08:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:08:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:08:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:08:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:08:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:08:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:10:13 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:19:16 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Broadcast" not found in /home/sasumyid/porkapolis.my.id/routes/channels.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/channels.php on line 16
+[17-Sep-2026 01:19:16 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/api.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/api.php on line 17
+[17-Sep-2026 01:19:16 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Route" not found in /home/sasumyid/porkapolis.my.id/routes/web.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/web.php on line 15
+[17-Sep-2026 01:19:16 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\Facades\Artisan" not found in /home/sasumyid/porkapolis.my.id/routes/console.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/routes/console.php on line 17

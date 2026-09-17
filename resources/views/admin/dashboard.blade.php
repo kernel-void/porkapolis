@@ -264,12 +264,16 @@
         </div>
     </div>
 </div>
-  
-<script>
-    // Bar Chart
-    var chartLabels = {!! json_encode($labels) !!};
-    var dataPemasukan = {!! json_encode($dataPemasukan) !!};
-    var dataPengeluaran = {!! json_encode($dataPengeluaran) !!};
-</script>
-
+ 
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('assets/js/demo/chart-bar-demo.js') }}"></script>
+    <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
+    <script>
+        // Bar Chart
+        var chartLabels = {!! json_encode($labels) !!};
+        var dataPemasukan = {!! json_encode($dataPemasukan) !!};
+        var dataPengeluaran = {!! json_encode($dataPengeluaran) !!};
+    </script>
+@endpush

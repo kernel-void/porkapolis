@@ -173,9 +173,6 @@
     <!-- Page level plugins -->
     <script src="{{ asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('assets/js/demo/chart-bar-demo.js') }}"></script>
-    <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
 
     <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
@@ -184,6 +181,8 @@
     <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
     
     <script src="{{ asset('assets/vendor/npm/bootstrap.bundle.min.js') }}"></script>
+    
+    <script src="{{ asset('assets/main/script.js') }}"></script>
 
     {{-- JS Select2 --}}
     <script src="{{ asset('assets/js/select2.min.js') }}"></script>
@@ -211,6 +210,8 @@
     </script>
 
     @yield('scripts')
+    
+    @stack('scripts')
 
     </body>
 

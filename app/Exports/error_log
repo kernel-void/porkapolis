@@ -1,0 +1,8 @@
+[17-Sep-2026 01:19:22 UTC] PHP Fatal error:  Uncaught Error: Interface "Maatwebsite\Excel\Concerns\FromCollection" not found in /home/sasumyid/porkapolis.my.id/app/Exports/PembayaranExport.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/app/Exports/PembayaranExport.php on line 18
+[17-Sep-2026 01:19:32 UTC] PHP Fatal error:  Uncaught Error: Interface "Maatwebsite\Excel\Concerns\FromCollection" not found in /home/sasumyid/porkapolis.my.id/app/Exports/PembayaranExport.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/app/Exports/PembayaranExport.php on line 18

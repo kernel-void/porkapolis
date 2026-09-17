@@ -1,0 +1,728 @@
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:08:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:08:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:08:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:10:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:10:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:10:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:10:11 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:10:12 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:19:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:19:13 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:19:14 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:19:15 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17
+[17-Sep-2026 01:19:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/app.php:19
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/app.php on line 19
+[17-Sep-2026 01:19:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/cache.php on line 18
+[17-Sep-2026 01:19:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/broadcasting.php on line 18
+[17-Sep-2026 01:19:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/database.php on line 18
+[17-Sep-2026 01:19:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/logging.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/logging.php on line 21
+[17-Sep-2026 01:19:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/filesystems.php on line 16
+[17-Sep-2026 01:19:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/hashing.php on line 32
+[17-Sep-2026 01:19:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/mail.php on line 16
+[17-Sep-2026 01:19:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/queue.php on line 16
+[17-Sep-2026 01:19:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/session.php on line 21
+[17-Sep-2026 01:19:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/sanctum.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/sanctum.php on line 18
+[17-Sep-2026 01:19:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/sasumyid/porkapolis.my.id/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/services.php on line 18
+[17-Sep-2026 01:19:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/sasumyid/porkapolis.my.id/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/sasumyid/porkapolis.my.id/config/view.php on line 17

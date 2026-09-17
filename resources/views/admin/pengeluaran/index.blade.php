@@ -55,10 +55,10 @@
             </div>
             
             <div class="card-body">
-                <div class="pt-2">
+                <div class="pt-2 table-responsive">
                     <form id="printForm" action="{{ route('admin.pengeluaran.exportPdf') }}" method="POST" target="_blank">
                     @csrf
-                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0" style="table-layout: fixed;">
+                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     @can('pengeluaran.export')
