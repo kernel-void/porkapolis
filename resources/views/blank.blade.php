@@ -15,7 +15,7 @@
             $currentUrl = url()->current();
         @endphp
 
-        <a href="{{ $previousUrl !== $currentUrl ? $previousUrl : getDashboardRoute() }}">&larr; Kembali</a>
+        <a href="{{ $previousUrl !== $currentUrl ? $previousUrl : route('admin.dashboard') }}">&larr; Kembali</a>
     </div>
 </div>
 @endsection

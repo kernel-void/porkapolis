@@ -13,8 +13,6 @@ class Setting extends Model
     public $incrementing = false;
     protected $keyType = 'string';
 
-    protected $guarded = [];
-
     protected $fillable = [
         'nama_aplikasi',
         'ikon_sidebar',

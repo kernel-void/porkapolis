@@ -58,7 +58,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">
                         Permission untuk Role: {{ ucfirst($role->name) }}
                     </h6>
-                    <span class="badge bg-secondary">{{ $role->permissions->count() }} izin aktif</span>
+                    <span class="badge bg-secondary text-light">{{ $role->permissions->count() }} izin aktif</span>
                 </div>
 
                 <form action="{{ route('admin.role.update', $role->id) }}" method="POST">

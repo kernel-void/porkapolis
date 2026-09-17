@@ -39,41 +39,103 @@
             <div class="card-header py-2 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Pengeluaran</h6>
 
-                <div class="d-flex gap-1">
-                    @can('pengeluaran.create')
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
-                            <i class="fas fa-plus"></i> Tambah Data
-                        </button>
-                    @endcan
+                <div class="d-flex align-items-center">
+                    {{-- Desktop: Tombol Biasa --}}
+                    <div class="d-none d-md-flex gap-1">
+                        @can('pengeluaran.create')
+                            <button class="btn btn-primary btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
+                                <i class="fas fa-plus"></i> Tambah Data
+                            </button>
+                        @endcan
 
-                    @can('pengeluaran.export')
-                        <button type="submit" form="printForm" class="btn btn-outline-secondary btn-sm ml-1" title="Export PDF">
-                            <i class="fas fa-print mr-1"></i> Export PDF
-                        </button>
-                    @endcan
+                        @can('pengeluaran.export')
+                            <button type="submit" form="printForm" class="btn btn-outline-secondary btn-sm" title="Export PDF">
+                                <i class="fas fa-print"></i> Export PDF
+                            </button>
+                        @endcan
+
+                        @can('pengeluaran.restore')
+                            <button class="btn btn-secondary btn-sm ml-1" data-bs-toggle="modal" data-bs-target="#trashModal" title="Data Terhapus">
+                                <i class="fas fa-trash-restore"></i> Data Terhapus ({{ $trashed->count() }})
+                            </button>
+                        @endcan
+                    </div>
+
+                    {{-- Mobile: tombol tunggal kalau cuma 1 aksi, selain itu hamburger --}}
+                    @php
+                        $mobileActions = collect([
+                            auth()->user()->can('pengeluaran.create'),
+                            auth()->user()->can('pengeluaran.export'),
+                            auth()->user()->can('pengeluaran.restore'),
+                        ])->filter()->count();
+                    @endphp
+
+                    @if ($mobileActions === 1)
+                        <div class="d-md-none">
+                            @if (auth()->user()->can('pengeluaran.create'))
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
+                                    <i class="fas fa-plus"></i> Tambah Data
+                                </button>
+                            @elseif (auth()->user()->can('pengeluaran.export'))
+                                <button type="submit" form="printForm" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-print"></i> Export PDF
+                                </button>
+                            @else
+                                <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#trashModal">
+                                    <i class="fas fa-trash-restore"></i> Data Terhapus ({{ $trashed->count() }})
+                                </button>
+                            @endif
+                        </div>
+                    @elseif ($mobileActions > 1)
+                        <div class="dropdown no-arrow d-md-none">
+                            <a class="dropdown-toggle" href="#" role="button" id="mobileMenuButton"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="mobileMenuButton">
+                                <div class="dropdown-header">Opsi:</div>
+                                @can('pengeluaran.create')
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createModal">
+                                        <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-400"></i> Tambah Data
+                                    </button>
+                                @endcan
+                                @can('pengeluaran.export')
+                                    <button type="submit" form="printForm" class="dropdown-item">
+                                        <i class="fas fa-print fa-sm fa-fw mr-2 text-gray-400"></i> Export PDF
+                                    </button>
+                                @endcan
+                                @can('pengeluaran.restore')
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#trashModal">
+                                        <i class="fas fa-trash-restore fa-sm fa-fw mr-2 text-gray-400"></i> Data Terhapus ({{ $trashed->count() }})
+                                    </button>
+                                @endcan
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             
             <div class="card-body">
-                <div class="pt-2 table-responsive">
-                    <form id="printForm" action="{{ route('admin.pengeluaran.exportPdf') }}" method="POST" target="_blank">
+                <form id="printForm" action="{{ route('admin.pengeluaran.exportPdf') }}" method="POST" target="_blank">
                     @csrf
-                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                </form>
+                <div class="table-responsive pt-2">
+                    <table class="table table-bordered text-center table-hover" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     @can('pengeluaran.export')
-                                        <th style="width: 70px;">
+                                        <th>
                                             <input type="checkbox" id="checkAll" class="mr-1">
                                             No
                                         </th>
                                     @else
-                                        <th style="width: 50px;">No</th>
+                                        <th>No</th>
                                     @endcan
-                                    <th style="width: 130px;">Tanggal</th>
-                                    <th style="width: 150px;">Jumlah</th>
+                                    <th>Tanggal</th>
+                                    <th>Jumlah</th>
                                     <th>Keterangan</th>
                                     @canany(['pengeluaran.update', 'pengeluaran.delete'])
-                                        <th style="width: 110px;">Aksi</th>
+                                        <th>Aksi</th>
                                     @endcanany
                                 </tr>
                             </thead>
@@ -88,11 +150,11 @@
                                                        value="{{ $keluar->id }}"
                                                        form="printForm"
                                                        class="row-check mr-2">
-                                                <span>{{ $key + 1 }}</span>
+                                                <span>{{ $pengeluaran->firstItem() + $key }}</span>
                                             </div>
                                         </td>
                                     @else
-                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $pengeluaran->firstItem() + $key }}</td>
                                     @endcan
                                     <td>{{ \Carbon\Carbon::parse($keluar->tanggal)->translatedFormat('d F Y') }}</td>
                                     <td>Rp{{ number_format($keluar->jumlah, 0, ',', '.') }}</td>
@@ -128,7 +190,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </form>
+                </div>
+                <div class="mt-3">
+                    {{ $pengeluaran->links() }}
                 </div>
             </div>
         </div>
@@ -141,6 +205,63 @@
 @endcan
 @can('pengeluaran.delete')
     @include('admin.pengeluaran.delete')
+@endcan
+
+@can('pengeluaran.restore')
+<div class="modal fade" id="trashModal" tabindex="-1" aria-labelledby="trashModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="trashModalLabel">Data Pengeluaran Terhapus</h5>
+                <button type="button" class="close" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                @if ($trashed->isEmpty())
+                    <p class="text-center text-muted mb-0">Tidak ada data terhapus.</p>
+                @else
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Jumlah</th>
+                                    <th>Keterangan</th>
+                                    <th>Dihapus</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($trashed as $item)
+                                <tr>
+                                    <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
+                                    <td>Rp{{ number_format($item->jumlah, 0, ',', '.') }}</td>
+                                    <td class="text-break">{{ $item->keterangan ?? '-' }}</td>
+                                    <td>{{ $item->deleted_at->translatedFormat('d F Y, H:i') }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.pengeluaran.restore', $item->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="fas fa-trash-restore"></i> Pulihkan
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endcan
+
+@can('pengeluaran.export')
+    @include('components.no-selection-modal')
 @endcan
 @endsection
 
@@ -186,7 +307,8 @@ if (printFormEl) {
         const checked = document.querySelectorAll('.row-check:checked');
         if (checked.length === 0) {
             e.preventDefault();
-            alert('Silakan pilih minimal satu data untuk diexport.');
+            const modalEl = document.getElementById('noSelectionModal');
+            if (modalEl) new bootstrap.Modal(modalEl).show();
         }
     });
 }

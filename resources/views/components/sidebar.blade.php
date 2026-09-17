@@ -1,8 +1,3 @@
-@php
-    use App\Models\Setting;
-    $pengaturan = Setting::first();
-@endphp
-
 <ul class="navbar-nav bg-gradient-{{ $pengaturan->tema }} sidebar sidebar-dark accordion {{ $isMobile ? 'toggled' : '' }}" id="accordionSidebar">
     <a class="sidebar-brand d-flex flex-column align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
         <div class="sidebar-brand-icon">

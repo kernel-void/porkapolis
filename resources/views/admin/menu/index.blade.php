@@ -39,21 +39,98 @@
             <div class="card-header py-2 d-flex justify-content-between align-items-center">
                 <h6 class="m-0 font-weight-bold text-primary">Data Menu</h6>
 
-                <div class="d-flex">
-                    @can('menu.create')
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
-                            <i class="fas fa-plus"></i> Tambah Data
-                        </button>
-                    @endcan
+                <div class="d-flex align-items-center">
+                    {{-- Desktop: Tombol Biasa --}}
+                    <div class="d-none d-md-flex gap-1">
+                        @can('menu.create')
+                            <button class="btn btn-primary btn-sm mr-1" data-bs-toggle="modal" data-bs-target="#createModal" title="Create Data">
+                                <i class="fas fa-plus"></i> Tambah Data
+                            </button>
+                        @endcan
+
+                        @can('menu.export')
+                            <button type="submit" form="printForm" class="btn btn-outline-secondary btn-sm" title="Export PDF">
+                                <i class="fas fa-print"></i> Export PDF
+                            </button>
+                        @endcan
+
+                        @can('menu.restore')
+                            <button class="btn btn-secondary btn-sm ml-1" data-bs-toggle="modal" data-bs-target="#trashModal" title="Data Terhapus">
+                                <i class="fas fa-trash-restore"></i> Data Terhapus ({{ $trashed->count() }})
+                            </button>
+                        @endcan
+                    </div>
+
+                    {{-- Mobile: tombol tunggal kalau cuma 1 aksi, selain itu hamburger --}}
+                    @php
+                        $mobileActions = collect([
+                            auth()->user()->can('menu.create'),
+                            auth()->user()->can('menu.export'),
+                            auth()->user()->can('menu.restore'),
+                        ])->filter()->count();
+                    @endphp
+
+                    @if ($mobileActions === 1)
+                        <div class="d-md-none">
+                            @if (auth()->user()->can('menu.create'))
+                                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
+                                    <i class="fas fa-plus"></i> Tambah Data
+                                </button>
+                            @elseif (auth()->user()->can('menu.export'))
+                                <button type="submit" form="printForm" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-print"></i> Export PDF
+                                </button>
+                            @else
+                                <button class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#trashModal">
+                                    <i class="fas fa-trash-restore"></i> Data Terhapus ({{ $trashed->count() }})
+                                </button>
+                            @endif
+                        </div>
+                    @elseif ($mobileActions > 1)
+                        <div class="dropdown no-arrow d-md-none">
+                            <a class="dropdown-toggle" href="#" role="button" id="mobileMenuButton"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bars fa-sm fa-fw text-gray-400"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="mobileMenuButton">
+                                <div class="dropdown-header">Opsi:</div>
+                                @can('menu.create')
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createModal">
+                                        <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-400"></i> Tambah Data
+                                    </button>
+                                @endcan
+                                @can('menu.export')
+                                    <button type="submit" form="printForm" class="dropdown-item">
+                                        <i class="fas fa-print fa-sm fa-fw mr-2 text-gray-400"></i> Export PDF
+                                    </button>
+                                @endcan
+                                @can('menu.restore')
+                                    <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#trashModal">
+                                        <i class="fas fa-trash-restore fa-sm fa-fw mr-2 text-gray-400"></i> Data Terhapus ({{ $trashed->count() }})
+                                    </button>
+                                @endcan
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
             
             <div class="card-body">
+                <form id="printForm" action="{{ route('admin.menu.exportPdf') }}" method="POST" target="_blank">
+                    @csrf
+                </form>
                 <div class="pt-2 table-responsive">
-                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered text-center" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                @can('menu.export')
+                                    <th>
+                                        <input type="checkbox" id="checkAll" class="mr-1">
+                                        No
+                                    </th>
+                                @else
+                                    <th>No</th>
+                                @endcan
                                 <th>Nama Menu</th>
                                 <th>Stok</th>
                                 <th>Harga</th>
@@ -66,7 +143,16 @@
                         <tbody>
                             @foreach ($menu as $key => $menuItem)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
+                                @can('menu.export')
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <input type="checkbox" name="menu_ids[]" value="{{ $menuItem->id }}" form="printForm" class="row-check mr-2">
+                                            <span>{{ $menu->firstItem() + $key }}</span>
+                                        </div>
+                                    </td>
+                                @else
+                                    <td>{{ $menu->firstItem() + $key }}</td>
+                                @endcan
                                 <td>{{ $menuItem->nama_menu }}</td>
                                 <td>{{ $menuItem->stok }}</td>
                                 <td>Rp{{ number_format($menuItem->harga, 0, ',', '.') }}</td>
@@ -104,6 +190,9 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="mt-3">
+                    {{ $menu->links() }}
+                </div>
             </div>
         </div>
 </div>
@@ -115,6 +204,63 @@
 @endcan
 @can('menu.delete')
     @include('admin.menu.delete')
+@endcan
+
+@can('menu.restore')
+<div class="modal fade" id="trashModal" tabindex="-1" aria-labelledby="trashModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="trashModalLabel">Data Menu Terhapus</h5>
+                <button type="button" class="close" data-bs-dismiss="modal"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                @if ($trashed->isEmpty())
+                    <p class="text-center text-muted mb-0">Tidak ada data terhapus.</p>
+                @else
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Nama Menu</th>
+                                    <th>Stok</th>
+                                    <th>Harga</th>
+                                    <th>Dihapus</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($trashed as $item)
+                                <tr>
+                                    <td>{{ $item->nama_menu }}</td>
+                                    <td>{{ $item->stok }}</td>
+                                    <td>Rp{{ number_format($item->harga, 0, ',', '.') }}</td>
+                                    <td>{{ $item->deleted_at->translatedFormat('d F Y, H:i') }}</td>
+                                    <td>
+                                        <form action="{{ route('admin.menu.restore', $item->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="fas fa-trash-restore"></i> Pulihkan
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endcan
+
+@can('menu.export')
+    @include('components.no-selection-modal')
 @endcan
 @endsection
 
@@ -144,5 +290,28 @@ document.addEventListener('click', function(e) {
 
     document.getElementById('deleteForm').action = deleteBtn.dataset.url;
 });
+
+// Checklist semua (hanya ada kalau user punya izin export)
+const checkAllEl = document.getElementById('checkAll');
+if (checkAllEl) {
+    checkAllEl.addEventListener('change', function () {
+        document.querySelectorAll('.row-check').forEach(cb => {
+            cb.checked = this.checked;
+        });
+    });
+}
+
+// Cegah export kalau tidak ada yang dipilih
+const printFormEl = document.getElementById('printForm');
+if (printFormEl) {
+    printFormEl.addEventListener('submit', function (e) {
+        const checked = document.querySelectorAll('.row-check:checked');
+        if (checked.length === 0) {
+            e.preventDefault();
+            const modalEl = document.getElementById('noSelectionModal');
+            if (modalEl) new bootstrap.Modal(modalEl).show();
+        }
+    });
+}
 </script>
 @endsection

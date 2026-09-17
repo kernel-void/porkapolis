@@ -57,7 +57,7 @@
 
                 <div class="mt-2">
                     <label for="password" class="form-label">Password</label>
-                    <input type="text" name="password" class="form-control" id="password"value="{{ old('password', $user->bypass) }}" >
+                    <input type="text" name="password" class="form-control" id="password" placeholder="Kosongkan jika tidak ingin mengganti" autocomplete="new-password">
                 </div>
 
                 <div class="mt-2 pb-4">

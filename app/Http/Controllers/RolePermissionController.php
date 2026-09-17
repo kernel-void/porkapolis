@@ -2,46 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Setting;
-use Illuminate\Http\Request;
+use App\Http\Requests\Role\UpdateRoleRequest;
+use App\Services\RoleService;
+use App\Services\SettingService;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class RolePermissionController extends Controller
 {
-    public function index()
-    {
-        $pengaturan = Setting::first();
-
-        $roles = Role::with('permissions')->orderBy('name')->get();
-
-        // Kelompokkan permission berdasarkan modul (bagian sebelum titik)
-        $permissions = Permission::orderBy('name')->get();
-        $grouped = $permissions->groupBy(function ($permission) {
-            return explode('.', $permission->name)[0];
-        });
-
-        return view('admin.role.index', compact('roles', 'grouped', 'pengaturan'));
+    public function __construct(
+        private RoleService $roleService,
+        private SettingService $settingService,
+    ) {
     }
 
-    public function update(Request $request, Role $role)
+    public function index()
     {
-        $request->validate([
-            'permissions' => 'array',
-            'permissions.*' => 'exists:permissions,name',
-        ]);
+        return view('admin.role.index', array_merge($this->roleService->indexData(), [
+            'pengaturan' => $this->settingService->current(),
+        ]));
+    }
 
-        // Pengaman: cegah role 'admin' kehilangan akses ke halaman ini sendiri
-        // (supaya admin tidak bisa mengunci dirinya sendiri keluar dari halaman kelola permission)
-        if ($role->name === 'admin') {
-            $incoming = $request->input('permissions', []);
-            if (!in_array('role.view', $incoming) || !in_array('role.update', $incoming)) {
-                return redirect()->back()->with('error', 'Role Admin wajib memiliki izin "role.view" dan "role.update" agar tidak terkunci dari halaman ini.');
-            }
+    public function update(UpdateRoleRequest $request, Role $role)
+    {
+        try {
+            $this->roleService->update($role, $request->input('permissions', []));
+        } catch (\RuntimeException $e) {
+            return redirect()->back()->with('error', $e->getMessage());
         }
 
-        $role->syncPermissions($request->input('permissions', []));
-
-        return redirect()->route('admin.role.index')->with('success', "Permission untuk role \"{$role->name}\" berhasil diperbarui.");
+        return redirect()->route('admin.role.index')
+            ->with('success', "Permission untuk role \"{$role->name}\" berhasil diperbarui.");
     }
 }

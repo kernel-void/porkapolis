@@ -2,83 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Pemasukan\StorePemasukanRequest;
+use App\Http\Requests\Pemasukan\UpdatePemasukanRequest;
+use App\Services\PemasukanService;
+use App\Services\SettingService;
 use Illuminate\Http\Request;
-use App\Models\Setting;
-use App\Models\Pemasukan;
-use App\Models\Menu;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 class PemasukanController extends Controller
 {
-    public function index()
-    {
-        $pengaturan = Setting::first();
-        $pemasukan = Pemasukan::with('details.menu')->latest()->get();
-        $menu = Menu::latest()->get();
-        return view('admin.pemasukan.index', compact('pengaturan', 'pemasukan', 'menu'));
+    public function __construct(
+        private PemasukanService $pemasukanService,
+        private SettingService $settingService,
+    ) {
     }
 
-    public function store(Request $request)
+    public function index()
     {
-        $validator = Validator::make($request->all(), [
-            'tanggal'         => 'required|date',
-            'keterangan'      => 'nullable|string',
-            'items'           => 'required|array|min:1',
-            'items.*.menu_id' => 'required|exists:menus,id',
-            'items.*.qty'     => 'required|integer|min:1',
-        ], [
-            'tanggal.required'         => 'Tanggal tidak boleh kosong.',
-            'items.required'           => 'Minimal harus ada 1 menu.',
-            'items.*.menu_id.required' => 'Menu tidak boleh kosong.',
-            'items.*.qty.required'     => 'Jumlah tidak boleh kosong.',
+        return view('admin.pemasukan.index', [
+            'pengaturan' => $this->settingService->current(),
+            'pemasukan'  => $this->pemasukanService->paginate(),
+            'trashed'    => $this->pemasukanService->allTrashed(),
+            'menu'       => $this->pemasukanService->menus(),
         ]);
+    }
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with('error', $validator->errors()->first());
-        }
-
+    public function store(StorePemasukanRequest $request)
+    {
         try {
-            DB::transaction(function () use ($request) {
-                $totalKeseluruhan = 0;
-                $itemsData = [];
-
-                foreach ($request->items as $item) {
-                    $menu = Menu::findOrFail($item['menu_id']);
-
-                    if ($menu->stok < $item['qty']) {
-                        throw new \Exception("Stok {$menu->nama_menu} tidak mencukupi. Sisa: {$menu->stok}");
-                    }
-
-                    $subtotal = $menu->harga * $item['qty'];
-                    $totalKeseluruhan += $subtotal;
-
-                    $itemsData[] = [
-                        'menu'     => $menu,
-                        'qty'      => $item['qty'],
-                        'subtotal' => $subtotal,
-                    ];
-                }
-
-                $pemasukan = Pemasukan::create([
-                    'tanggal'    => $request->tanggal,
-                    'total'      => $totalKeseluruhan,
-                    'keterangan' => $request->keterangan,
-                ]);
-
-                foreach ($itemsData as $data) {
-                    $pemasukan->details()->create([
-                        'menu_id'  => $data['menu']->id,
-                        'qty'      => $data['qty'],
-                        'subtotal' => $data['subtotal'],
-                    ]);
-
-                    $data['menu']->decrement('stok', $data['qty']);
-                }
-            });
+            $this->pemasukanService->create($request->validated());
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
         }
@@ -86,69 +37,10 @@ class PemasukanController extends Controller
         return redirect()->route('admin.pemasukan.index')->with('success', 'Pemasukan berhasil ditambahkan');
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdatePemasukanRequest $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'tanggal'         => 'required|date',
-            'keterangan'      => 'nullable|string',
-            'items'           => 'required|array|min:1',
-            'items.*.menu_id' => 'required|exists:menus,id',
-            'items.*.qty'     => 'required|integer|min:1',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with('error', $validator->errors()->first());
-        }
-
         try {
-            DB::transaction(function () use ($request, $id) {
-                $pemasukan = Pemasukan::with('details')->findOrFail($id);
-
-                foreach ($pemasukan->details as $oldDetail) {
-                    Menu::where('id', $oldDetail->menu_id)->increment('stok', $oldDetail->qty);
-                }
-
-                $totalKeseluruhan = 0;
-                $itemsData = [];
-
-                foreach ($request->items as $item) {
-                    $menu = Menu::findOrFail($item['menu_id']);
-
-                    if ($menu->stok < $item['qty']) {
-                        throw new \Exception("Stok {$menu->nama_menu} tidak mencukupi. Sisa: {$menu->stok}");
-                    }
-
-                    $subtotal = $menu->harga * $item['qty'];
-                    $totalKeseluruhan += $subtotal;
-
-                    $itemsData[] = [
-                        'menu'     => $menu,
-                        'qty'      => $item['qty'],
-                        'subtotal' => $subtotal,
-                    ];
-                }
-
-                $pemasukan->details()->delete();
-
-                foreach ($itemsData as $data) {
-                    $pemasukan->details()->create([
-                        'menu_id'  => $data['menu']->id,
-                        'qty'      => $data['qty'],
-                        'subtotal' => $data['subtotal'],
-                    ]);
-
-                    $data['menu']->decrement('stok', $data['qty']);
-                }
-
-                $pemasukan->update([
-                    'tanggal'    => $request->tanggal,
-                    'total'      => $totalKeseluruhan,
-                    'keterangan' => $request->keterangan,
-                ]);
-            });
+            $this->pemasukanService->update((int) $id, $request->validated());
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('error', $e->getMessage());
         }
@@ -156,18 +48,22 @@ class PemasukanController extends Controller
         return redirect()->route('admin.pemasukan.index')->with('success', 'Data pemasukan berhasil diperbarui.');
     }
 
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $pemasukan = Pemasukan::with('details')->findOrFail($id);
+        $this->pemasukanService->delete((int) $id);
 
-        // Kembalikan stok menu sebelum data dihapus permanen
-        foreach ($pemasukan->details as $detail) {
-            Menu::where('id', $detail->menu_id)->increment('stok', $detail->qty);
-        }
+        return redirect()->back()->with('success', 'Data pemasukan berhasil dihapus. Masih bisa dipulihkan dari Data Terhapus.');
+    }
 
-        $pemasukan->details()->delete(); // hapus detail dulu
-        $pemasukan->delete(); // hard delete (karena model tidak lagi pakai SoftDeletes)
+    public function restore($id)
+    {
+        $this->pemasukanService->restore((int) $id);
 
-        return redirect()->back()->with('success', 'Data pemasukan berhasil dihapus permanen');
+        return redirect()->back()->with('success', 'Data pemasukan berhasil dipulihkan.');
+    }
+
+    public function exportPdf(Request $request)
+    {
+        return $this->pemasukanService->exportPdf($request->input('pemasukan_ids', []));
     }
 }

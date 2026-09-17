@@ -48,17 +48,12 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Beranda</h1>
 
-        <form method="GET" action="" class="mb-3">
-            <div class="d-flex align-items-center">
-                <label for="tahun" class="mr-3 mt-2">Tahun</label>
-
-                <select name="tahun" id="tahun" class="form-control select2" style="width: 150px;" onchange="this.form.submit()">
-                    @foreach ($tahunList as $tahun)
-                        <option value="{{ $tahun }}" {{ $tahun == $tahunDipilih ? 'selected' : '' }}>
-                            {{ $tahun }}
-                        </option>
-                    @endforeach
-                </select>
+        <form method="POST" action="{{ route('admin.dashboard.bulan') }}" class="mb-3">
+            @csrf
+            <div class="d-flex align-items-center flex-wrap">
+                <label for="bulan" class="mr-3 mb-0">Bulan</label>
+                <input type="month" id="bulan" name="bulan" value="{{ $bulanDipilihValue }}"
+                    class="form-control" style="width: 200px;" onchange="this.form.submit()">
             </div>
         </form>      
     </div>
@@ -239,7 +234,7 @@
             
                     <div class="dropdown no-arrow">
                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bars fa-sm fa-fw text-gray-400"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
@@ -257,7 +252,10 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-bar" id="chartBarContainer">
-                        <canvas id="myBarChart"></canvas>
+                        <canvas id="myBarChart"
+                            data-labels='@json($labels)'
+                            data-pemasukan='@json($dataPemasukan)'
+                            data-pengeluaran='@json($dataPengeluaran)'></canvas>
                     </div>
                 </div>
             </div>
@@ -268,12 +266,14 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('assets/js/demo/chart-bar-demo.js') }}"></script>
-    <script src="{{ asset('assets/js/demo/chart-pie-demo.js') }}"></script>
     <script>
-        // Bar Chart
-        var chartLabels = {!! json_encode($labels) !!};
-        var dataPemasukan = {!! json_encode($dataPemasukan) !!};
-        var dataPengeluaran = {!! json_encode($dataPengeluaran) !!};
+        // Ambil data chart dari atribut data-* (tanpa menyisipkan PHP ke dalam JS)
+        (function () {
+            var canvas = document.getElementById('myBarChart');
+            window.chartLabels = JSON.parse(canvas.dataset.labels);
+            window.dataPemasukan = JSON.parse(canvas.dataset.pemasukan);
+            window.dataPengeluaran = JSON.parse(canvas.dataset.pengeluaran);
+        })();
     </script>
+    <script src="{{ asset('assets/js/demo/chart-bar-demo.js') }}"></script>
 @endpush

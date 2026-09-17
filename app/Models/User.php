@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasFactory, HasRoles;
+    use HasFactory, HasRoles, SoftDeletes;
  
     protected $primaryKey = 'id_users';
     public $incrementing = false; 
@@ -17,7 +18,7 @@ class User extends Authenticatable
     protected $guard_name = 'web';
 
     protected $fillable = [
-        'id_users', 'username', 'name', 'bypass', 'password', 'role_id', 'login_times', 'last_ip', 'user_agent', 'last_seen', 'gambar'
+        'id_users', 'username', 'name', 'password', 'role_id', 'login_times', 'last_ip', 'user_agent', 'last_seen', 'gambar'
     ];
 
     protected $hidden = ['password'];

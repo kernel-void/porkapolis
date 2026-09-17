@@ -81,11 +81,6 @@
                                                 <label class="custom-control-label" for="customCheck">Tampilkan</label>
                                             </div>
                                         </div>
-                                        <div class="form-group d-flex justify-content-center">
-                                            <div style="transform: scale(0.85); transform-origin: top center;">
-                                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITEKEY') }}"></div>
-                                            </div>
-                                        </div>
                                         <hr>
                                         <button type="submit" class="btn btn-{{ $pengaturan->tema }} btn- btn-block">
                                             Login
@@ -114,8 +109,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }} "></script>
-
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script>
         function togglePassword() {

@@ -2,64 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Setting;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Setting\UpdateSettingRequest;
+use App\Services\SettingService;
 
 class AplikasiController extends Controller
 {
-    public function index()
+    public function __construct(private SettingService $settingService)
     {
-        $pengaturan = Setting::first();
-
-        return view('admin.pengaturan.index', compact('pengaturan'));
     }
 
-    public function update(Request $request)
+    public function index()
     {
-        $validator = Validator::make($request->all(), [
-            'nama_aplikasi' => 'required|max:30',
-            'ikon_sidebar'  => 'required',
-            'tema'          => 'required',
-            'footer'        => 'required',
-            'logo'          => 'nullable|image|mimes:png,jpg,jpeg|max:5048',
-        ], [
-            'nama_aplikasi.required' => 'Nama Aplikasi tidak boleh kosong.',
-            'nama_aplikasi.max'      => 'Nama aplikasi maksimal 30 karakter.',
-            'ikon_sidebar'           => 'Ikon Sidebar tidak boleh kosong.',
-            'tema.required'          => 'Tema tidak boleh kosong.',
-            'footer.required'        => 'Footer tidak boleh kosong.',
-            'logo.image'             => 'File logo harus berupa gambar.',
-            'logo.mimes'             => 'Logo harus berekstensi PNG, JPG, atau JPEG.',
-            'logo.max'               => 'Ukuran logo maksimal 5MB.',
+        return view('admin.pengaturan.index', [
+            'pengaturan' => $this->settingService->current(),
         ]);
+    }
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with('error', $validator->errors()->first());
-        }
+    public function update(UpdateSettingRequest $request)
+    {
+        $data = $request->validated();
 
-        $setting = Setting::first();
-
-        if ($request->hasFile('logo')) {
-            if ($setting->logo && file_exists(public_path($setting->logo))) {
-                unlink(public_path($setting->logo));
-            }
-
-            $logo = $request->file('logo');
-            $logo->move(public_path('assets/img/logo-login'), 'logo.png');
-
-            $setting->logo = 'assets/img/logo-login/logo.png';
-        }
-
-        $setting->nama_aplikasi = $request->nama_aplikasi;
-        $setting->ikon_sidebar = strtolower($request->ikon_sidebar);
-        $setting->tema = $request->tema;
-        $setting->footer = $request->footer;
-        $setting->save();
+        $this->settingService->update([
+            'nama_aplikasi' => $data['nama_aplikasi'],
+            'ikon_sidebar'  => strtolower($data['ikon_sidebar']),
+            'tema'          => $data['tema'],
+            'footer'        => $data['footer'],
+        ], $request->file('logo'));
 
         return redirect()->route('admin.pengaturan')->with('success', 'Pengaturan berhasil diperbarui!');
     }

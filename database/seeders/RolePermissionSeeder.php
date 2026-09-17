@@ -13,37 +13,43 @@ class RolePermissionSeeder extends Seeder
     {
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
-        $modules = ['pemasukan', 'pengeluaran', 'menu', 'user', 'pengaturan', 'role'];
-        $actions = ['view', 'create', 'update', 'delete', 'export', 'restore'];
+        // Permission didefinisikan sesuai fitur yang benar-benar ada di aplikasi.
+        $moduleActions = [
+            'menu'        => ['view', 'create', 'update', 'delete', 'export', 'restore'],
+            'pemasukan'   => ['view', 'create', 'update', 'delete', 'export', 'restore'],
+            'pengeluaran' => ['view', 'create', 'update', 'delete', 'export', 'restore'],
+            'user'        => ['view', 'create', 'update', 'delete', 'export', 'restore'],
+            'pengaturan'  => ['view', 'update'],
+            'role'        => ['view', 'update'],
+        ];
 
-        foreach ($modules as $module) {
+        $allNames = [];
+
+        foreach ($moduleActions as $module => $actions) {
             foreach ($actions as $action) {
                 Permission::firstOrCreate(['name' => "{$module}.{$action}"]);
+                $allNames[] = "{$module}.{$action}";
             }
         }
+
+        // Buang permission lama yang sudah tidak dipakai fitur apa pun
+        Permission::whereNotIn('name', $allNames)->delete();
 
         $owner = Role::firstOrCreate(['name' => 'owner']);
         $admin = Role::firstOrCreate(['name' => 'admin']);
         $kasir = Role::firstOrCreate(['name' => 'kasir']);
 
-        // Owner: full akses transaksi & menu, TAPI TIDAK termasuk pengaturan & manajemen user
+        // Owner: semua transaksi & menu, TANPA manajemen user & pengaturan
         $ownerPermissions = Permission::whereNotIn('name', [
             'user.view', 'user.create', 'user.update', 'user.delete', 'user.export', 'user.restore',
-            'pengaturan.view', 'pengaturan.create', 'pengaturan.update', 'pengaturan.delete', 'pengaturan.export', 'pengaturan.restore',
-        ])->get();
+            'pengaturan.view', 'pengaturan.update',
+        ])->pluck('name');
         $owner->syncPermissions($ownerPermissions);
 
-        // Admin: kelola menu & pemasukan & pengeluaran penuh, PLUS pengaturan & manajemen user (khusus admin)
-        $admin->syncPermissions([
-            'menu.view', 'menu.create', 'menu.update', 'menu.delete', 'menu.restore',
-            'pemasukan.view', 'pemasukan.create', 'pemasukan.update', 'pemasukan.delete',
-            'pengeluaran.view', 'pengeluaran.create', 'pengeluaran.update', 'pengeluaran.delete', 'pengeluaran.restore', 'pengeluaran.export',
-            'user.view', 'user.update',
-            'pengaturan.view', 'pengaturan.update',
-            'role.view', 'role.update',
-        ]);
+        // Admin: seluruh permission
+        $admin->syncPermissions($allNames);
 
-        // Kasir: input transaksi harian, tidak bisa hapus/restore, tidak ada akses pengaturan/user
+        // Kasir: input transaksi harian, tanpa hapus/export/restore
         $kasir->syncPermissions([
             'pemasukan.view', 'pemasukan.create', 'pemasukan.update',
             'pengeluaran.view', 'pengeluaran.create', 'pengeluaran.update',

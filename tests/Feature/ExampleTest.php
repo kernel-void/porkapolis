@@ -2,18 +2,23 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Setting;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
-    public function test_the_application_returns_a_successful_response(): void
-    {
-        $response = $this->get('/');
+    use RefreshDatabase;
 
-        $response->assertStatus(200);
+    public function test_halaman_login_dapat_dibuka(): void
+    {
+        Setting::create([
+            'nama_aplikasi' => 'Test App',
+            'ikon_sidebar'  => 'fas fa-wallet',
+            'tema'          => 'primary',
+            'footer'        => 'Test',
+        ]);
+
+        $this->get('/')->assertStatus(200);
     }
 }

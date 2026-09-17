@@ -25,10 +25,7 @@
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
      <!-- Custom styles for this page -->
-     <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-     <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet">
 </head>
-@stack('scripts')
 @php
     $isMobile = preg_match('/(android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini)/i', request()->header('User-Agent'));
 @endphp
@@ -63,7 +60,7 @@
 
                 <div class="modal-header">
                     <h5 class="modal-title" id="changePasswordLabel">Ganti Password</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -118,7 +115,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                        <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">
                             Batal
                         </button>
                         <button type="submit" class="btn btn-primary">
@@ -139,7 +136,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Anda Yakin mau Logout?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
@@ -148,18 +145,22 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batal</button>
                     <a class="btn btn-primary" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" href="#">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="{{ asset('assets/main/script.js') }}"></script>
-
-    <!-- Bootstrap core JavaScript-->
+    <!-- jQuery -->
     <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        // Shim: sb-admin-2.js memanggil $('.sidebar .collapse').collapse('hide').
+        // Sidebar ini tidak punya submenu collapse, cukup no-op (Bootstrap 4 bundle sudah dibuang).
+        if (window.jQuery && !jQuery.fn.collapse) {
+            jQuery.fn.collapse = function () { return this; };
+        }
+    </script>
 
     <!-- Core plugin JavaScript-->
     <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
@@ -173,24 +174,12 @@
     <!-- Page level plugins -->
     <script src="{{ asset('assets/vendor/chart.js/Chart.min.js') }}"></script>
 
-
-    <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('assets/js/demo/datatables-demo.js') }}"></script>
-    
+    <!-- Bootstrap 5 bundle (untuk atribut data-bs-*: dropdown & modal halaman) -->
     <script src="{{ asset('assets/vendor/npm/bootstrap.bundle.min.js') }}"></script>
-    
+
     <script src="{{ asset('assets/main/script.js') }}"></script>
 
-    {{-- JS Select2 --}}
-    <script src="{{ asset('assets/js/select2.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('.select2').select2();
-        });
-
         document.querySelectorAll('.toggle-password').forEach(button => {
             button.addEventListener('click', function () {
                 const target = document.querySelector(this.getAttribute('data-target'));
@@ -206,6 +195,14 @@
                     icon.classList.add('fa-eye');
                 }
             });
+        });
+
+        // Cegah peringatan aksesibilitas "Blocked aria-hidden ...": lepas fokus
+        // dari dalam modal sebelum Bootstrap menandainya aria-hidden saat menutup.
+        document.addEventListener('hide.bs.modal', function () {
+            if (document.activeElement && typeof document.activeElement.blur === 'function') {
+                document.activeElement.blur();
+            }
         });
     </script>
 
